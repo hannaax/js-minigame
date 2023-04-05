@@ -1,0 +1,85 @@
+:root {
+  /* color */
+  --color-black: #3f454d;
+  --color-white: #ffffff;
+  --color-blue: #3b88c3;
+  --color-yellow: #fbbe28;
+  --color-pink: #fd7f84;
+  --color-light-grey: #dfdfdf;
+  /* size */
+  --size-img: 2.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logo {
+  width: 6rem;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn > img {
+  width: var(--size-img);
+}
+
+.blue {
+  background-color: var(--color-blue);
+}
+
+.yellow {
+  background-color: var(--color-yellow);
+}
+
+.pink {
+  background-color: var(--color-pink);
+}
+
+.colorBtn {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+ul {
+  overflow-y: scroll;
+  -webkit-padding-start: 0;
+}
+
+li {
+  background-color: var(--color-white);
+  list-style-type: none;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+li > img {
+  width: var(--size-img);
+}
