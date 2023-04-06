@@ -12,12 +12,44 @@ const displayItems = (items) => {
   <span class="item__description">${item.gender}, ${item.size}</span>
 </li>`
   );
-  container.innerHTML += li;
+  container.innerHTML = li;
 };
 
-loadItems().then((items) => {
+const onButtonClick = (event, items) => {
+  const dataset = event.target.dataset;
+  const key = dataset.key;
+  const value = dataset.value;
+
+  if (key === null || value === null) {
+    return;
+  }
+
+  displayItems(items.filter((item) => item[key] === value));
+  //   if (value === "skirt") {
+  //     const skirts = items.filter((item) => item.type === "skirt");
+  //     displayItems(skirts);
+  //   } else {
+  //     displayItems(items);
+  //   }
+};
+
+const setEventListeners = (items) => {
+  const logo = document.querySelector(".logo");
+  const buttons = document.querySelector(".buttons");
+
   console.log(items);
+
+  logo.addEventListener("click", () => displayItems(items));
+  buttons.addEventListener("click", (event) => onButtonClick(event, items));
+};
+
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", setEventListeners);
+
+loadItems().then((items) => {
   displayItems(items);
+  setEventListeners(items);
 });
 
 // const renderItems = async () => {
