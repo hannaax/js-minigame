@@ -6,6 +6,13 @@ const loadItems = () => {
 
 const displayItems = (items) => {
   const container = document.querySelector(".items");
+  const li = items.map(
+    (item) => `<li class="item">
+  <img src="${item.image}" alt="${item.type}" class="item__thumbnail" />
+  <span class="item__description">${item.gender}, ${item.size}</span>
+</li>`
+  );
+  container.innerHTML += li;
 };
 
 loadItems().then((items) => {

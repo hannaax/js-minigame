@@ -6,8 +6,16 @@
   --color-yellow: #fbbe28;
   --color-pink: #fd7f84;
   --color-light-grey: #dfdfdf;
+
   /* size */
-  --size-img: 2.5rem;
+  --base-space: 0.5rem;
+  --size-button: 3.3rem;
+  --font-size: 1rem;
+  --size-border: 0.3rem;
+  --size-thumbnail: 3rem;
+
+  /* animation */
+  --animation-duration: 300ms;
 }
 
 * {
@@ -20,20 +28,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   height: 100vh;
 }
 
 .logo {
   width: 6rem;
   cursor: pointer;
+  transition: transform var(--animation-duration) ease;
 }
 
-.logo:hover {
-  transform: scale(1.1);
-}
-
-.menu {
+.buttons {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,11 +46,25 @@ body {
 .btn {
   background-color: transparent;
   border: none;
+  outline: none;
   cursor: pointer;
+  transition: transform var(--animation-duration) ease;
+  margin-right: var(--base-space);
 }
 
-.btn > img {
-  width: var(--size-img);
+.btn:hover,
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.imgBtn {
+  width: var(--size-button);
+}
+
+.colorBtn {
+  font-size: var(--font-size);
+  padding: calc(var(--base-space) * 2);
+  border-radius: var(--size-border);
 }
 
 .blue {
@@ -61,23 +79,40 @@ body {
   background-color: var(--color-pink);
 }
 
-.colorBtn {
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-ul {
+.items {
+  width: 60%;
+  height: 60%;
+  list-style: none;
+  padding-left: 0;
   overflow-y: scroll;
-  -webkit-padding-start: 0;
 }
 
-li {
+.items::-webkit-scrollbar {
+  width: 5px;
+}
+.items::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+.items::-webkit-scrollbar-track {
+  background-color: var(--color-black);
+}
+
+.item {
   background-color: var(--color-white);
-  list-style-type: none;
-  width: 20rem;
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+  padding: var(--base-space);
+  margin-bottom: var(--base-space);
+}
+
+.item__thumbnail {
+  width: var(--size-thumbnail);
+  height: var(--size-thumbnail);
+}
+
+.item__description {
+  margin-left: var(--base-space);
+  font-size: var(--font-size);
 }
 
 li > img {
