@@ -6,17 +6,19 @@ const loadItems = () => {
 
 const displayItems = (items) => {
   const container = document.querySelector(".items");
-  const li = items.map(
-    (item) => `<li class="item">
-  <img src="${item.image}" alt="${item.type}" class="item__thumbnail" />
-  <span class="item__description">${item.gender}, ${item.size}</span>
-</li>`
-  );
-  container.innerHTML = li;
+  container.innerHTML = items.map((item) => createHTMLString(item));
+};
+
+const createHTMLString = (item) => {
+  return `
+    <li class="item">
+      <img src="${item.image}" alt="${item.type}" class="item__thumbnail" />
+      <span class="item__description">${item.gender}, ${item.size}</span>
+    </li>`;
 };
 
 const onButtonClick = (event, items) => {
-  const dataset = event.target.dataset;
+  const dataset = event.targete.dataset;
   const key = dataset.key;
   const value = dataset.value;
 
@@ -25,12 +27,6 @@ const onButtonClick = (event, items) => {
   }
 
   displayItems(items.filter((item) => item[key] === value));
-  //   if (value === "skirt") {
-  //     const skirts = items.filter((item) => item.type === "skirt");
-  //     displayItems(skirts);
-  //   } else {
-  //     displayItems(items);
-  //   }
 };
 
 const setEventListeners = (items) => {
@@ -51,28 +47,3 @@ loadItems().then((items) => {
   displayItems(items);
   setEventListeners(items);
 });
-
-// const renderItems = async () => {
-//   let items = await loadItems();
-//   let html = "";
-//   items.forEach((item) => {
-//     const li = `<li>
-//     <img src=${item.image}>
-//       ${item.gender}, ${item.size}
-//       </li>`;
-
-//     html += li;
-//   });
-//   console.log(items);
-//   const ul = document.querySelector("ul");
-//   //   ul.appendChild(html);
-//   ul.innerHTML = html;
-// };
-
-// const blueBtn = document.querySelector(".blue");
-
-// const filter = () => {
-//   console.log("aa");
-// };
-
-// blueBtn.addEventListener("click", filter);
