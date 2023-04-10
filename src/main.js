@@ -18,7 +18,7 @@ const createHTMLString = (item) => {
 };
 
 const onButtonClick = (event, items) => {
-  const dataset = event.targete.dataset;
+  const dataset = event.target.dataset;
   const key = dataset.key;
   const value = dataset.value;
 
@@ -29,11 +29,19 @@ const onButtonClick = (event, items) => {
   displayItems(items.filter((item) => item[key] === value));
 };
 
+// const updateItem = (items, key, value) => {
+//   items.forEach((item) => {
+//     if (item[key] === value) {
+//       item.classList.remove("invisible");
+//     } else {
+//       item.classList.add("invisible");
+//     }
+//   });
+// }
+
 const setEventListeners = (items) => {
   const logo = document.querySelector(".logo");
   const buttons = document.querySelector(".buttons");
-
-  console.log(items);
 
   logo.addEventListener("click", () => displayItems(items));
   buttons.addEventListener("click", (event) => onButtonClick(event, items));

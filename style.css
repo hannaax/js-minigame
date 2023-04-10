@@ -118,3 +118,7 @@ body {
 li > img {
   width: var(--size-img);
 }
+
+.invisible {
+  display: none;
+}
